@@ -9,5 +9,6 @@ chrome.runtime.onMessage.addListener(
             chrome.tabs.sendMessage(tab.id, emailContent);
         })();
     }
+    
 
 )
