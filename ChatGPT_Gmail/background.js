@@ -1,14 +1,14 @@
-console.log('hello i am the service worker');
+console.log('Hello world');
 
 chrome.runtime.onMessage.addListener(
-    function(emailContent, sender, senderResponse) {
+    function(emailContent, sender, sendResponse) {
         console.log(emailContent);
-        /*(async function() {
+        (async function() {
             const tabs = await chrome.tabs.query({url: 'https://chat.openai.com/*'});
             const tab = tabs[0];
-            chrome.tabs.sendMessage(tab.id, emailContent);
-        })();*/
+            const gptResponse = await chrome.tabs.sendMessage(tab.id, emailContent);
+            sendResponse(gptResponse);
+        })();
+        return true;
     }
-    
-
 )
